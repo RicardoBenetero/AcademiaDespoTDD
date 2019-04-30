@@ -2,8 +2,12 @@
 public class Pilha {
 
 	public int tamanho;
-	private Object[] elementos = new Object[10];
+	private Object[] elementos;
 	private int quantidade = 0;
+
+	public Pilha(int maximo) {
+		elementos = new Object[maximo];
+	}
 
 	public boolean estaVazia() {
 		return quantidade == 0;
@@ -24,8 +28,11 @@ public class Pilha {
 	}
 
 	public Object desempilha() {
+		
+		if(estaVazia())
+			throw new PilhaVaziaException("não é possível desempilhar");
 		Object topo = topo();
-		quantidade --;
+		quantidade--;
 
 		return topo;
 	}
