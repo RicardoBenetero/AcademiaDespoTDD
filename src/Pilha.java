@@ -18,6 +18,9 @@ public class Pilha {
 	}
 
 	public void empilha(Object elemento) {
+		
+		if(quantidade == elementos.length)
+			throw new PilhaCheiaException("Pilha está cheia, não e possivel empilhar mais");
 		this.elementos[quantidade] = elemento;
 		quantidade++;
 	}

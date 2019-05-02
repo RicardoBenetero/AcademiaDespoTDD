@@ -1,6 +1,7 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -55,6 +56,21 @@ public class TestePilha {
 		
 		p.desempilha();
 		
+	}
+	@Test
+	public void adicionaNaPilhaCheia() {
+		for(int i = 0; i <10; i++) {
+			
+		
+		p.empilha("elemento"+ i);
+		}
+		
+		try {
+			p.empilha("boom");
+			fail();
+		} catch (PilhaCheiaException e) {
+			
+		}
 	}
 
 }
