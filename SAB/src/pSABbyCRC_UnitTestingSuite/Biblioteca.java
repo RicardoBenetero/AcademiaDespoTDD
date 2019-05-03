@@ -25,6 +25,7 @@ public class Biblioteca {
 	public void registraUsuario(String nome)
 			throws UsuarioJaRegistradoException, UsuarioComNomeVazioException,
 			UsuarioInexistenteException {
+		/*
 		if (nome != null) {
 			if (!nome.isEmpty()) {
 				Usuario usuario = new Usuario(nome);
@@ -37,7 +38,62 @@ public class Biblioteca {
 				throw new UsuarioComNomeVazioException("--->N‹o pode registrar usuario com nome vazio!");
 		} else
 			throw new UsuarioInexistenteException("--->N‹o pode registrar usuario inexistente!");
+			
+		
+			 */
+		
+		
+		if (nome != null) {
+		
+			
+			if (!nome.isEmpty()) {
+				Usuario usuario = new Usuario(nome);
+				if (!_usuarios.contains(usuario)) {
+					
+					_usuarios.add(usuario);
+				} else
+					throw new UsuarioJaRegistradoException("--->J‡ existe usu‡rio com o nome \""
+							+ nome + "\"! Use outro nome!");
+			} else
+				throw new UsuarioComNomeVazioException("--->N‹o pode registrar usuario com nome vazio!");
+		}else
+			throw new UsuarioInexistenteException("--->N‹o pode registrar usuario inexistente!");
+			
+		
+		
 	}
+	/*
+	 * 2 expressoes booleanas negativas
+	 * 
+	 * inverter o if com o else
+	 * 
+	 * 
+	 * 5 ifs aninhados
+	 * 
+	 * colocar um return e encerrar o if
+	 * 
+	 * usar polimorfismo
+	 * 
+	 * 
+	 * 1 nomes inapropriados 
+	 * 
+	 * renomear com nomes que expressem a intenção
+	 * 
+	 * 3 comentarios
+	 * 
+	 * 4 codigo duplicado
+	 * 
+	 * substituir variavel temporaria com return
+	 * 
+	 * extrair para um unico local
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
 
 	public void emprestaLivro(Livro livro, Usuario usuario)
 			throws LivroIndisponivelParaEmprestimoException,
