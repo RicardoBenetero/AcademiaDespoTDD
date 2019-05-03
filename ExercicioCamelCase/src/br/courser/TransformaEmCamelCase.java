@@ -2,7 +2,7 @@ package br.courser;
 
 public class TransformaEmCamelCase {
 
-	public String transformaComUmaPalavraInicioMinusculo(String original) {
+	public String transformaEmCamelCase(String original) {
 		return null;
 	}
 

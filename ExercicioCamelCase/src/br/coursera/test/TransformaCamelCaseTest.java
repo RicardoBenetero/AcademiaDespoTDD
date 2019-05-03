@@ -9,7 +9,7 @@ import br.courser.TransformaEmCamelCase;
 public class TransformaCamelCaseTest {
 
 	@Test
-	public void dereraRetornarPalavraComInicioMinusculo() {
+	public void dereraRetornarPalavrasEmCamelCase() {
 		
 		TransformaEmCamelCase palavraTranformada = new TransformaEmCamelCase();
 		
@@ -17,7 +17,7 @@ public class TransformaCamelCaseTest {
 		
 		String resultadoEsperado = "nome";
 		
-		assertEquals(resultadoEsperado,palavraTranformada.transformaComUmaPalavraInicioMinusculo(original));
+		assertEquals(resultadoEsperado,palavraTranformada.transformaEmCamelCase(original));
 		
 	}
 
