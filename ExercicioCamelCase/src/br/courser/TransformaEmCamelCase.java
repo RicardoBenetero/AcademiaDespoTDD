@@ -11,16 +11,21 @@ public class TransformaEmCamelCase {
 
 		List<String> listaPalavras;
 
-		listaPalavras = retornaListaPalavras(original);
+		listaPalavras = retornaLista(original);
 
-		// System.out.println(listaPalavras.get(0));
+	    System.out.println(listaPalavras.get(0));
 		return listaPalavras;
 
 	}
 
-	private static List<String> retornaListaPalavras(String original) {
-		// TODO Auto-generated method stub
-		return null;
+	private static List<String> retornaLista(String original) {
+		List<String> listaPalavras;
+
+		
+			listaPalavras = (Arrays.asList(original.split("(?=\\p{Upper})|(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")));
+		
+
+		return listaPalavras;
 	}
 
 }
