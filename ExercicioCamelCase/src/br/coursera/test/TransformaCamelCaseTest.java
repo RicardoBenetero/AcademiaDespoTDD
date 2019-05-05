@@ -2,6 +2,9 @@ package br.coursera.test;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Test;
 
 import br.courser.TransformaEmCamelCase;
@@ -9,15 +12,14 @@ import br.courser.TransformaEmCamelCase;
 public class TransformaCamelCaseTest {
 
 	@Test
-	public void dereraRetornarPalavrasEmCamelCase() {
+	public void dereraRetornarPalavrasEmMinusculoQuandoEntradaMinusculo() {
+		List<String> resultadoEsperado = Arrays.asList("nome");
+		
+		String entrada = "nome";
 		
 		TransformaEmCamelCase palavraTranformada = new TransformaEmCamelCase();
 		
-		String original = "nome";
-		
-		String resultadoEsperado = "nome";
-		
-		assertEquals(resultadoEsperado,palavraTranformada.transformaEmCamelCase(original));
+		 assertEquals(resultadoEsperado, palavraTranformada.converterCamelCase(entrada));
 		
 	}
 
