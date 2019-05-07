@@ -13,14 +13,13 @@ public class TransformaCamelCaseTest {
 
 	@Test
 	public void dereraRetornarPalavraEmMinusculoQuandoEntradaMinusculo() {
-		List<String> resultadoEsperado = Arrays.asList("nome");
+		List<String> resultadoEsperado = Arrays.asList("teste");
 		
-		String entrada = "nome";
+		String entrada = "teste";
 		
 		TransformaEmCamelCase palavraTranformada = new TransformaEmCamelCase();
 		
 		 assertEquals(resultadoEsperado, palavraTranformada.converterCamelCase(entrada));
-		
 	}
 	@Test
 	public void dereraRetornarPalavraEmMaiusculoQuandoEntradaMinusculo() {
@@ -31,7 +30,6 @@ public class TransformaCamelCaseTest {
 		TransformaEmCamelCase palavraTranformada = new TransformaEmCamelCase();
 		
 		 assertEquals(resultadoEsperado, palavraTranformada.converterCamelCase(entrada));
-		
 	}
 
 }
