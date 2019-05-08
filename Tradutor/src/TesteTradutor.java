@@ -51,5 +51,15 @@ public class TesteTradutor {
 		assertEquals("war is bad", t.traduzirFrase("guerra é ruim"));
 
 	}
+	@Test
+	public void traduzirFraseComDuasTraducoesMesmaPalavra() {
+
+		t.adicionaTraducao("paz", "peace");
+		t.adicionaTraducao("é", "is");
+		t.adicionaTraducao("bom", "good");
+		t.adicionaTraducao("bom", "nice");
+		assertEquals("peace is good", t.traduzirFrase("paz é bom"));
+
+	}
 
 }
