@@ -26,7 +26,24 @@ public class TesteCarrinhoCompras {
 		c.adicionarObservador(mock);
 		c.adicionaProduto(new Produto("tenis",100));
 		mock.verificaRecebimentoProduto("tenis",100);
-		assertEquals(220,c.total());
+		assertEquals(100,c.total());
+
+		
+		
+	}
+	@Test
+	public void adicionarDoisObservadores() {
+		
+		CarrinhoCompras c = new CarrinhoCompras();
+		MockObservadorCarrinho mock1 = new MockObservadorCarrinho();
+		MockObservadorCarrinho mock2 = new MockObservadorCarrinho();
+		c.adicionarObservador(mock1);
+		c.adicionarObservador(mock2);
+		c.adicionaProduto(new Produto("tenis",100));
+		mock1.verificaRecebimentoProduto("tenis",100);
+		mock2.verificaRecebimentoProduto("tenis",100);
+
+		assertEquals(100,c.total());
 
 		
 		
