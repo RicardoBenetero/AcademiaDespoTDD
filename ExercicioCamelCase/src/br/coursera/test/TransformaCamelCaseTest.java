@@ -31,6 +31,15 @@ public class TransformaCamelCaseTest {
 		
 		 assertEquals(resultadoEsperado, palavraTranformada.converterCamelCase(entrada));
 	}
+	
+	@Test
+	public void dereraRetornarSeparadoComDuasPalavraInicioMinusculo() {
+		TransformaEmCamelCase palavraTranformada = new TransformaEmCamelCase();
+		 List<String> resultadoEsperado = Arrays.asList("nome", "Composto");
+		 String entrada = "nomeComposto";
+         System.out.println("teste duas palavras retorna separado "+ entrada); 
+		 assertEquals(resultadoEsperado, palavraTranformada.converterCamelCase(entrada));
+}
 
 }
 
