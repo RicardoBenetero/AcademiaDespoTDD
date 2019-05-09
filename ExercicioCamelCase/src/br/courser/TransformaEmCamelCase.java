@@ -19,11 +19,22 @@ public class TransformaEmCamelCase {
 
 	private List<String> retornaLista(String original) {
 		List<String> listaPalavras;
-
+		if (this.isAcronimo(original)) {
+			listaPalavras = new ArrayList<String>();
+			listaPalavras.add(original);
+		}else {
 		listaPalavras = retornaListaDePalavras(
 				Arrays.asList(original.split("(?=\\p{Upper})|(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")));
 
+	
+	}
 		return listaPalavras;
+
+	}
+
+	private boolean isAcronimo(String original) {
+		
+		return original.toUpperCase().equals(original);
 	}
 
 	private List<String> retornaListaDePalavras(List<String> listaPalavras) {
