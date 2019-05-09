@@ -66,5 +66,12 @@ public class TransformaCamelCaseTest {
 
 	assertEquals(resultadoEsperado, palavraTranformada.converterCamelCase(entrada));	
 	}
+	@Test
+	public void dereraRetornarQuandoMaisDeDuasPalavraComAcronimoNoMeio() {
+		 List<String> resultadoEsperado = Arrays.asList("numero", "CPF", "contribuinte");
+		 String entrada = "numeroCPFContribuinte";
+
+		 assertEquals(resultadoEsperado, palavraTranformada.converterCamelCase(entrada));		 
+}
 
 }

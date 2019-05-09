@@ -86,7 +86,8 @@ public class TransformaEmCamelCase {
 		if (palavra.length() > 1) {
 			
 			if (acronimo != null && !acronimo.isEmpty()) {
-				
+				listaPalavras.add(acronimo);
+				acronimo = "";
 			}
 				
 				
