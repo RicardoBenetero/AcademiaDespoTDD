@@ -29,9 +29,25 @@ public class TransformaEmCamelCase {
 	private List<String> retornaListaDePalavras(List<String> listaPalavras) {
 		if (this.verificaSeListaPossuiUmaPalavra(listaPalavras)) {
 			this.converteParaMinusculoQuandoUmaPalavra(listaPalavras);
+		} else {
+			listaPalavras = this.trataListaPalavras(listaPalavras);
 		}
 		return listaPalavras;
 
+	}
+
+	private List<String> trataListaPalavras(List<String> listaPalavras) {
+		List<String> novaListaPalavras = new ArrayList<String>();
+		String montarAcronimo = new String();
+
+		for (String palavra : listaPalavras) {
+			montarAcronimo = this.incluirPalavra(novaListaPalavras, palavra, montarAcronimo);
+
+			novaListaPalavras.add(montarAcronimo);
+			montarAcronimo = "";
+		}
+
+		return novaListaPalavras;
 	}
 
 	private void converteParaMinusculoQuandoUmaPalavra(List<String> listaPalavras) {
@@ -43,4 +59,27 @@ public class TransformaEmCamelCase {
 		return (listaPalavras.size() == 1);
 	}
 
+	private void incluirPalavra(List<String> listaPalavras, String palavra) {
+		if (listaPalavras.size() == 0)
+			listaPalavras.add(palavra.toLowerCase());
+		else
+			listaPalavras.add(palavra);
+	}
+
+	private String incluirPalavra(List<String> listaPalavras, String palavra, String acronimo) {
+		if (palavra.length() > 1) {
+
+			//if (acronimo != null && !acronimo.isEmpty()) {
+			//	listaPalavras.add(acronimo);
+			//	acronimo = "";
+		//	}
+
+			this.incluirPalavra(listaPalavras, palavra);
+
+	//	} else {
+	//acronimo += palavra;
+		}
+
+		return acronimo;
+	}
 }
