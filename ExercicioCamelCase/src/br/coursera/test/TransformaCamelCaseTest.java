@@ -73,5 +73,12 @@ public class TransformaCamelCaseTest {
 
 		 assertEquals(resultadoEsperado, palavraTranformada.converterCamelCase(entrada));		 
 }
+	@Test
+	public void dereraRetornarQuandoComDuasPalavraSegundaNumero() {
+		 List<String> resultadoEsperado = Arrays.asList("recupera", "10", "primeiros");
+		 String entrada = "recupera10primeiros";
+
+		 assertEquals(resultadoEsperado, palavraTranformada.converterCamelCase(entrada));		 
+}
 
 }
