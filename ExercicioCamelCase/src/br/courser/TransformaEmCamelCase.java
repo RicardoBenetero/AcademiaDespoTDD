@@ -6,15 +6,25 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import br.coursera.test.InicioDigitoException;
+
 public class TransformaEmCamelCase {
 
 	public static List<String> converterCamelCase(String original) {
 		TransformaEmCamelCase converter = new TransformaEmCamelCase();
 		List<String> listaPalavras = null;
-
+		if (converter.comecaComDigito(original)) {
+			throw new InicioDigitoException("A palavra inicia com digito");
+		}else {
 		listaPalavras = converter.retornaLista(original);
-
+		}
 		return listaPalavras;
+	}
+
+	private boolean comecaComDigito(String original) {
+		
+		return Character.isDigit(original.charAt(0));
+		
 	}
 
 	private List<String> retornaLista(String original) {
