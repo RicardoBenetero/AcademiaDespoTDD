@@ -22,7 +22,7 @@ public class TransformaCamelCaseTest {
 	}
 
 	@Test
-	public void dereraRetornarPalavraEmMinusculoQuandoEntradaMinusculo() {
+	public void deveraRetornarPalavraEmMinusculoQuandoEntradaMinusculo() {
 		List<String> resultadoEsperado = Arrays.asList("teste");
 
 		String entrada = "teste";
@@ -31,7 +31,7 @@ public class TransformaCamelCaseTest {
 	}
 
 	@Test
-	public void dereraRetornarPalavraEmMaiusculoQuandoEntradaMinusculo() {
+	public void deveraRetornarPalavraEmMaiusculoQuandoEntradaMinusculo() {
 		List<String> resultadoEsperado = Arrays.asList("nome");
 
 		String entrada = "Nome";
@@ -40,45 +40,51 @@ public class TransformaCamelCaseTest {
 	}
 
 	@Test
-	public void dereraRetornarSeparadoComDuasPalavraInicioMinusculo() {
+	public void deveraRetornarSeparadoComDuasPalavraInicioMinusculo() {
 		List<String> resultadoEsperado = Arrays.asList("nome", "Composto");
 		String entrada = "nomeComposto";
 		assertEquals(resultadoEsperado, palavraTranformada.converterCamelCase(entrada));
 	}
 	@Test
-	public void  dereraRetornarSeparadoComDuasPalavraInicioMaiusculo() {
+	public void  deveraRetornarSeparadoComDuasPalavraInicioMaiusculo() {
 		 List<String> resultadoEsperado = Arrays.asList("nome", "Composto");
 		 String entrada = "NomeComposto";
 
 		 assertEquals(resultadoEsperado, palavraTranformada.converterCamelCase(entrada));		 
 }
 	@Test
-	public void dereraRetornarQuandoUmaPalavraAcronimo() {
+	public void deveraRetornarQuandoUmaPalavraAcronimo() {
 	List<String> resultadoEsperado = Arrays.asList("CPF");
 	String entrada = "CPF";
 
 	assertEquals(resultadoEsperado, palavraTranformada.converterCamelCase(entrada));
 	}
 	@Test
-	public void dereraRetornarQuandoDuasPalavraSegundaAcronimo() {
+	public void deveraRetornarQuandoDuasPalavraSegundaAcronimo() {
 	List<String> resultadoEsperado = Arrays.asList("numero", "CPF");
 	String entrada = "numeroCPF";
 
 	assertEquals(resultadoEsperado, palavraTranformada.converterCamelCase(entrada));	
 	}
 	@Test
-	public void dereraRetornarQuandoMaisDeDuasPalavraComAcronimoNoMeio() {
+	public void deveraRetornarQuandoMaisDeDuasPalavraComAcronimoNoMeio() {
 		 List<String> resultadoEsperado = Arrays.asList("numero", "CPF", "Contribuinte");
 		 String entrada = "numeroCPFContribuinte";
 
 		 assertEquals(resultadoEsperado, palavraTranformada.converterCamelCase(entrada));		 
 }
 	@Test
-	public void dereraRetornarQuandoComDuasPalavraSegundaNumero() {
+	public void deveraRetornarQuandoComDuasPalavraSegundaNumero() {
 		 List<String> resultadoEsperado = Arrays.asList("recupera", "10", "primeiros");
 		 String entrada = "recupera10primeiros";
 
 		 assertEquals(resultadoEsperado, palavraTranformada.converterCamelCase(entrada));		 
 }
+	@Test(expected=InicioDigitoException.class)
+	public void deveraRetornarExcecaoQuandoPalavraIniciaComDigito(){
+		 String resultadoEsperado = "1vamosTestarCEP10AgoraCara";
+
+		 palavraTranformada.converterCamelCase(resultadoEsperado);
+} 
 
 }
