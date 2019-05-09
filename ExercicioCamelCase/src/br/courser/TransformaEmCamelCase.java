@@ -51,10 +51,17 @@ public class TransformaEmCamelCase {
 		List<String> novaListaPalavras = new ArrayList<String>();
 		String montarAcronimo = new String();
 
-		for (String palavra : listaPalavras) {
+		for (String palavra : listaPalavras) 
 			montarAcronimo = this.incluirPalavra(novaListaPalavras, palavra, montarAcronimo);
+			
+			if (montarAcronimo != null && !montarAcronimo.isEmpty()) {
+				
+				novaListaPalavras.add(montarAcronimo);
+				
+				montarAcronimo = "";
+				}
 
-		}
+		
 
 		return novaListaPalavras;
 	}
@@ -77,11 +84,19 @@ public class TransformaEmCamelCase {
 
 	private String incluirPalavra(List<String> listaPalavras, String palavra, String acronimo) {
 		if (palavra.length() > 1) {
+			
+			if (acronimo != null && !acronimo.isEmpty()) {
+				
+			}
+				
+				
+
 
 			this.incluirPalavra(listaPalavras, palavra);
+		} else {
+			acronimo += palavra;
+			}	
 
-		}
-
-		return acronimo;
-	}
+			return acronimo;
+			}
 }
