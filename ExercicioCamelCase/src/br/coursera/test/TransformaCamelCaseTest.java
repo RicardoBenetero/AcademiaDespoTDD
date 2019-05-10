@@ -78,8 +78,14 @@ public class TransformaCamelCaseTest {
 
 	@Test(expected = InicioDigitoException.class)
 	public void deveraRetornarExcecaoQuandoPalavraIniciaComDigito() {
-		String resultadoEsperado = "1vamosTestarCEP10AgoraCara";
-		palavraTranformada.converterCamelCase(resultadoEsperado);
+		String entrada = "1vamosTestarCEP10AgoraCara";
+		palavraTranformada.converterCamelCase(entrada);
 	}
+	@Test(expected=PossuiCaracterEspecialException.class)
+	public void deveraRetornarExcecaoQuandoComCaracteresEspeciais(){
+		 String entrada = "nome#Composto";
+
+		 palavraTranformada.converterCamelCase(entrada);
+}
 
 }
