@@ -1,10 +1,16 @@
 package br.coursera;
 
+import br.coursera.testes.MockServicoRemoto;
+
 public class CaixaEletronico {
 
-	public Object login() {
-		// TODO Auto-generated method stub
-		return null;
+	public String login(String numeroconta,MockServicoRemoto mock ) {
+		
+		if(mock.recuperarConta(numeroconta)) {
+		return "Usuário Autenticado";
+	}else {
+		return "Não foi possível autenticar o usuário";
 	}
 
+}
 }
