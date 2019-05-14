@@ -3,7 +3,9 @@ package br.coursera.testes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MockServicoRemoto {
+import br.coursera.ServicoRemoto;
+
+public class MockServicoRemoto implements ServicoRemoto {
 	List<ContaCorrente> contas = new ArrayList<ContaCorrente>();
 	
 	public MockServicoRemoto(List<ContaCorrente> contas) {
