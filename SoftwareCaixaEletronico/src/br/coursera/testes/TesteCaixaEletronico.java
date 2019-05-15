@@ -49,5 +49,12 @@ public class TesteCaixaEletronico {
 		
 		assertEquals( "Não foi possível autenticar o usuário", atm.login("78910",mock));
 	}
+	@Test
+	public void depositarComSucesso() {
+		
+		atm.depositar("1234",mock,100);
+		
+		assertEquals( "Não foi possível autenticar o usuário", atm.login("78910",mock));
+	}
 
 }

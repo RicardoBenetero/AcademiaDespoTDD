@@ -3,6 +3,7 @@ package br.coursera.testes;
 public class ContaCorrente {
 	
 	private String numeroConta;
+	private double saldo;
 	
 	
 	public ContaCorrente(String numeroConta) {
@@ -14,6 +15,9 @@ public class ContaCorrente {
 	public String getNumeroConta() {
 		return numeroConta;
 	}
+
+
+	
 		
 	
 
