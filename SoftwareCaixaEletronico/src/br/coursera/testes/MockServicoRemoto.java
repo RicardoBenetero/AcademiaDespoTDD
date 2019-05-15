@@ -22,4 +22,13 @@ public class MockServicoRemoto implements ServicoRemoto {
 		}
 		return "Não foi possível autenticar o usuário";
 }
+
+	@Override
+	public void persistirConta(String numeroConta, Double saldo) {
+		ContaCorrente conta;
+		String contaCorrente = recuperarConta(numeroConta);
+		if(contaCorrente != null){
+			conta.setSaldo(saldo);
+		}
+}
 }
