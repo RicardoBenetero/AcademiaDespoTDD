@@ -44,5 +44,10 @@ public class TesteCaixaEletronico {
 		
 		assertEquals( "Usuário Autenticado", atm.login("5678",mock));
 	}
+	@Test
+	public void logarComFalha() {
+		
+		assertEquals( "Não foi possível autenticar o usuário", atm.login("78910",mock));
+	}
 
 }
