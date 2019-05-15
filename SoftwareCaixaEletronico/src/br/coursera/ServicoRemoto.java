@@ -4,6 +4,6 @@ import br.coursera.testes.ContaCorrente;
 
 public interface ServicoRemoto {
 	
-	public ContaCorrente recuperarConta(String numeroConta);
+	public String recuperarConta(String numeroConta);
 
 }

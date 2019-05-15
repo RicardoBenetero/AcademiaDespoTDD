@@ -14,12 +14,12 @@ public class MockServicoRemoto implements ServicoRemoto {
 		
 	}
 	
-	public ContaCorrente  recuperarConta(String numeroconta) {
+	public String  recuperarConta(String numeroconta) {
 		for(ContaCorrente contaCorrente : contas){
 			if(contaCorrente.getNumeroConta() == numeroconta){
-				return contaCorrente;
+				return contaCorrente.getNumeroConta();
 			}
 		}
-		return null;
+		return "Não foi possível autenticar o usuário";
 }
 }

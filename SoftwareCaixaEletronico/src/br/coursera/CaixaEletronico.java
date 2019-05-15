@@ -6,7 +6,7 @@ public class CaixaEletronico {
 
 	public String login(String numeroconta,MockServicoRemoto mock ) {
 		
-		if(mock.recuperarConta(numeroconta).getNumeroConta().contains(numeroconta)) {
+		if(mock.recuperarConta(numeroconta).contains(numeroconta)) {
 		return "Usuário Autenticado";
 	}else {
 		return "Não foi possível autenticar o usuário";
