@@ -14,9 +14,9 @@ public class MockServicoRemoto implements ServicoRemoto {
 		
 	}
 	
-	public String  recuperarConta(String numeroconta) {
+	public String  recuperarConta(String numeroConta) {
 		for(ContaCorrente contaCorrente : contas){
-			if(contaCorrente.getNumeroConta() == numeroconta){
+			if(contaCorrente.getNumeroConta() == numeroConta){
 				return contaCorrente.getNumeroConta();
 			}
 		}
@@ -25,10 +25,20 @@ public class MockServicoRemoto implements ServicoRemoto {
 
 	@Override
 	public void persistirConta(String numeroConta, Double saldo) {
-		ContaCorrente conta;
+		/*
+		ContaCorrente conta = null;
 		String contaCorrente = recuperarConta(numeroConta);
 		if(contaCorrente != null){
 			conta.setSaldo(saldo);
 		}
+	 
+		 */
+		for(ContaCorrente contaCorrente : contas){
+			if(contaCorrente.getNumeroConta() == numeroConta){
+				contaCorrente.setSaldo(saldo);
+			}
+		
 }
+	}
 }
+

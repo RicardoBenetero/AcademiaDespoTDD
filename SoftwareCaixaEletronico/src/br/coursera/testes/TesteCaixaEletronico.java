@@ -11,17 +11,16 @@ import org.junit.Test;
 import br.coursera.CaixaEletronico;
 
 public class TesteCaixaEletronico {
-	
+
 	CaixaEletronico atm;
 	List<ContaCorrente> contas;
 	MockServicoRemoto mock;
 	ContaCorrente conta1;
 	ContaCorrente conta2;
 
-	
 	@Before
 	public void inicializaDados() {
-		
+
 		atm = new CaixaEletronico();
 		contas = new ArrayList<ContaCorrente>();
 		conta1 = new ContaCorrente("1234");
@@ -29,32 +28,31 @@ public class TesteCaixaEletronico {
 		contas.add(conta1);
 		contas.add(conta2);
 		mock = new MockServicoRemoto(contas);
-		
-		
+
 	}
 
 	@Test
 	public void logarComSucesso() {
-		
-		assertEquals( "Usuário Autenticado", atm.login("1234",mock));
+
+		assertEquals("Usuário Autenticado", atm.login("1234", mock));
 	}
-	
+
 	@Test
 	public void logarComSucessoCaixaComVariasContas() {
-		
-		assertEquals( "Usuário Autenticado", atm.login("5678",mock));
+
+		assertEquals("Usuário Autenticado", atm.login("5678", mock));
 	}
+
 	@Test
 	public void logarComFalha() {
-		
-		assertEquals( "Não foi possível autenticar o usuário", atm.login("78910",mock));
+
+		assertEquals("Não foi possível autenticar o usuário", atm.login("78910", mock));
 	}
+
 	@Test
 	public void depositarComSucesso() {
-		
-		atm.depositar("1234",mock,100);
-		
-		assertEquals( "Não foi possível autenticar o usuário", atm.login("78910",mock));
+
+		assertEquals("Depósito recebido com sucesso", atm.depositar("1234", mock, 100));
 	}
 
 }
