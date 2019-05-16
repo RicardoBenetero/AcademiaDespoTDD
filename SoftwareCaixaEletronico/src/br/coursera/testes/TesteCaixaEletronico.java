@@ -84,7 +84,8 @@ public class TesteCaixaEletronico {
 		contas.add(conta3);
 		mock = new MockServicoRemoto(contas);
 		atm.depositar("6666", mock, 200);
-		assertEquals("O saldo é R$200.0", atm.saldo("6666", mock));
+		atm.sacar("6666", mock, 100);
+		assertEquals("O saldo é R$100.0", atm.saldo("6666", mock));
 	}
 
 }

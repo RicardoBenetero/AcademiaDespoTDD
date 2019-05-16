@@ -25,7 +25,7 @@ public class CaixaEletronico {
 		contaCorrenteRecuperada = mock.recuperarConta(numeroContaCorrente);
 
 		mock.persistirConta(contaCorrenteRecuperada.getNumeroConta(), saldo);
-System.out.println(contaCorrenteRecuperada.getSaldo() + "  contaCorrenteRecuperada saldo no depositar");
+
 		return "Dep�sito recebido com sucesso";
 
 	}
@@ -33,41 +33,15 @@ System.out.println(contaCorrenteRecuperada.getSaldo() + "  contaCorrenteRecupera
 	public String sacar(String numeroContaCorrente, MockServicoRemoto mock, double valor) {
 		contaCorrenteRecuperada = mock.recuperarConta(numeroContaCorrente);
 
-		//double saldoComRetirada = mock.getContas().iterator().next().getSaldo() - saldo;
-		mock.persistirConta(contaCorrenteRecuperada.getNumeroConta(), contaCorrenteRecuperada.getSaldo());
-		System.out.println("numero conta : " +contaCorrenteRecuperada.getNumeroConta() + contaCorrenteRecuperada.getSaldo() + "  contaCorrenteRecuperada saldo no sacar");
+		mock.persistirConta(contaCorrenteRecuperada.getNumeroConta(), contaCorrenteRecuperada.getSaldo() - valor);
 		return "Retire seu dinheiro";
 	}
 
 	public String saldo(String numeroContaCorrente, MockServicoRemoto mock) {
 		contaCorrenteRecuperada = mock.recuperarConta(numeroContaCorrente);
-		
-			return "O saldo é R$" + contaCorrenteRecuperada.getSaldo();
-      // return "Conta não encontrada";
 
-
-
+		return "O saldo é R$" + contaCorrenteRecuperada.getSaldo();
+		// return "Conta não encontrada";
 
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

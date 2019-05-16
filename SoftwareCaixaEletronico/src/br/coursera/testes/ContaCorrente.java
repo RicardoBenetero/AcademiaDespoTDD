@@ -18,7 +18,7 @@ public class ContaCorrente {
 
 
 	public void setSaldo(Double valor) {
-    this.saldo = saldo + valor;	
+    this.saldo = valor;	
 	}
 
 
