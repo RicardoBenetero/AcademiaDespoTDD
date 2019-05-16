@@ -32,9 +32,10 @@ public class CaixaEletronico {
 
 	public String sacar(String numeroContaCorrente, MockServicoRemoto mock, double valor) {
 		contaCorrenteRecuperada = mock.recuperarConta(numeroContaCorrente);
-
+		
 		mock.persistirConta(contaCorrenteRecuperada.getNumeroConta(), contaCorrenteRecuperada.getSaldo() - valor);
 		return "Retire seu dinheiro";
+		
 	}
 
 	public String saldo(String numeroContaCorrente, MockServicoRemoto mock) {
