@@ -7,13 +7,13 @@ import br.coursera.testes.ContaCorrente;
 import br.coursera.testes.MockServicoRemoto;
 
 public class CaixaEletronico {
-	private String contaCorrenteRecuperada;
+	private ContaCorrente contaCorrenteRecuperada;
 
 	List<ContaCorrente> contas = new ArrayList<ContaCorrente>();
 
 	public String login(String numeroconta, MockServicoRemoto mock) {
 
-		if (mock.recuperarConta(numeroconta).contains(numeroconta)) {
+		if (mock.recuperarConta(numeroconta).getNumeroConta().contains(numeroconta)) {
 			return "Usu�rio Autenticado";
 		} else {
 			return "N�o foi poss�vel autenticar o usu�rio";
@@ -24,25 +24,25 @@ public class CaixaEletronico {
 	public String depositar(String numeroContaCorrente, MockServicoRemoto mock, double saldo) {
 		contaCorrenteRecuperada = mock.recuperarConta(numeroContaCorrente);
 
-		mock.persistirConta(contaCorrenteRecuperada, saldo);
-
+		mock.persistirConta(contaCorrenteRecuperada.getNumeroConta(), saldo);
+System.out.println(contaCorrenteRecuperada.getSaldo() + "  contaCorrenteRecuperada saldo no depositar");
 		return "Dep�sito recebido com sucesso";
 
 	}
 
-	public String sacar(String numeroContaCorrente, MockServicoRemoto mock, double saldo) {
+	public String sacar(String numeroContaCorrente, MockServicoRemoto mock, double valor) {
 		contaCorrenteRecuperada = mock.recuperarConta(numeroContaCorrente);
 
-		double saldoComRetirada = mock.getContas().iterator().next().getSaldo() - saldo;
-		mock.persistirConta(contaCorrenteRecuperada, saldoComRetirada);
-
+		//double saldoComRetirada = mock.getContas().iterator().next().getSaldo() - saldo;
+		mock.persistirConta(contaCorrenteRecuperada.getNumeroConta(), contaCorrenteRecuperada.getSaldo());
+		System.out.println("numero conta : " +contaCorrenteRecuperada.getNumeroConta() + contaCorrenteRecuperada.getSaldo() + "  contaCorrenteRecuperada saldo no sacar");
 		return "Retire seu dinheiro";
 	}
 
 	public String saldo(String numeroContaCorrente, MockServicoRemoto mock) {
 		contaCorrenteRecuperada = mock.recuperarConta(numeroContaCorrente);
-		double saldo = mock.getContas().iterator().next().getSaldo();
-			return "O saldo é R$" + saldo;
+		
+			return "O saldo é R$" + contaCorrenteRecuperada.getSaldo();
       // return "Conta não encontrada";
 
 

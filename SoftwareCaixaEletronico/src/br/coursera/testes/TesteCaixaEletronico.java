@@ -80,7 +80,11 @@ public class TesteCaixaEletronico {
 	
 	@Test
 	public void saldoComSucesso() {
-		assertEquals("O saldo é R$200.0", atm.saldo("1234", mock));
+		ContaCorrente conta3 = new ContaCorrente("6666");
+		contas.add(conta3);
+		mock = new MockServicoRemoto(contas);
+		atm.depositar("6666", mock, 200);
+		assertEquals("O saldo é R$200.0", atm.saldo("6666", mock));
 	}
 
 }

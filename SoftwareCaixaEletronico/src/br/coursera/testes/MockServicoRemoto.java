@@ -19,10 +19,10 @@ public class MockServicoRemoto implements ServicoRemoto {
 
 	}
 
-	public String recuperarConta(String numeroConta) {
+	public ContaCorrente recuperarConta(String numeroConta) {
 		for (ContaCorrente contaCorrente : contas) {
 			if (contaCorrente.getNumeroConta() == numeroConta) {
-				return contaCorrente.getNumeroConta();
+				return contaCorrente;
 			}
 		}
 
