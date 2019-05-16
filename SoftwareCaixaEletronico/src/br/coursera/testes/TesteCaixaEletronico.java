@@ -50,7 +50,7 @@ public class TesteCaixaEletronico {
 	public void logarComFalha() {
 		atm.login("78910", mock);
 
-		//assertEquals("Não foi possível autenticar o usuário", atm.login("78910", mock));
+		
 	}
 
 	@Test
@@ -63,7 +63,7 @@ public class TesteCaixaEletronico {
 		
 		atm.depositar("888888", mock, 1236);
 
-		//assertEquals("Conta inexistente", atm.depositar("888888", mock, 1236));
+		
 	}
 
 }
