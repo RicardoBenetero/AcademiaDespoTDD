@@ -39,8 +39,35 @@ public class CaixaEletronico {
 		return "Retire seu dinheiro";
 	}
 
-	public Object saldo(String string, MockServicoRemoto mock, int i) {
-		// TODO Auto-generated method stub
-		return null;
+	public String saldo(String numeroContaCorrente, MockServicoRemoto mock) {
+		contaCorrenteRecuperada = mock.recuperarConta(numeroContaCorrente);
+		double saldo = mock.getContas().iterator().next().getSaldo();
+			return "O saldo é R$" + saldo;
+      // return "Conta não encontrada";
+
+
+
+
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
