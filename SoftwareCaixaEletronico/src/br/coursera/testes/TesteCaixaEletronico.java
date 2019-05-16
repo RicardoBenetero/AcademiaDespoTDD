@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.coursera.CaixaEletronico;
+import br.coursera.ContaInexistenteException;
 
 public class TesteCaixaEletronico {
 
@@ -17,6 +18,8 @@ public class TesteCaixaEletronico {
 	MockServicoRemoto mock;
 	ContaCorrente conta1;
 	ContaCorrente conta2;
+	
+
 
 	@Before
 	public void inicializaDados() {
@@ -43,22 +46,24 @@ public class TesteCaixaEletronico {
 		assertEquals("Usuário Autenticado", atm.login("5678", mock));
 	}
 
-	@Test
+	@Test(expected = ContaInexistenteException.class)
 	public void logarComFalha() {
+		atm.login("78910", mock);
 
-		assertEquals("Não foi possível autenticar o usuário", atm.login("78910", mock));
+		//assertEquals("Não foi possível autenticar o usuário", atm.login("78910", mock));
 	}
 
 	@Test
 	public void depositarComSucesso() {
-
 		assertEquals("Depósito recebido com sucesso", atm.depositar("1234", mock, 100));
 	}
 	
-	@Test
+	@Test(expected = ContaInexistenteException.class)
 	public void depositarComFalha() {
+		
+		atm.depositar("888888", mock, 1236);
 
-		assertEquals("Conta inexistente", atm.depositar("12346", mock, 100));
+		//assertEquals("Conta inexistente", atm.depositar("888888", mock, 1236));
 	}
 
 }
