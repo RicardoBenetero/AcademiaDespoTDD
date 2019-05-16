@@ -35,9 +35,11 @@ public class CaixaEletronico {
 		if((contaCorrenteRecuperada.getSaldo() - valor) >= 0) {
 		mock.persistirConta(contaCorrenteRecuperada.getNumeroConta(), contaCorrenteRecuperada.getSaldo() - valor);
 		return "Retire seu dinheiro";
-		}else {
-			return "Saldo Insuficiente";
+		
 		}
+	
+		throw new SaldoInsuficienteException("Saldo insuficiente");
+		
 	}
 
 	public String saldo(String numeroContaCorrente, MockServicoRemoto mock) {

@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import br.coursera.CaixaEletronico;
 import br.coursera.ContaInexistenteException;
+import br.coursera.SaldoInsuficienteException;
 
 public class TesteCaixaEletronico {
 
@@ -80,14 +81,14 @@ public class TesteCaixaEletronico {
 
 		
 	}
-	@Test
+	@Test(expected = SaldoInsuficienteException.class)
 	public void sacarComFalhaSaldoInsuficiente() {
 		ContaCorrente conta4 = new ContaCorrente("7777");
 		contas.add(conta4);
 		mock = new MockServicoRemoto(contas);
 		atm.depositar("7777", mock, 200);
+		atm.sacar("7777", mock, 300);
 		
-		assertEquals("Saldo Insuficiente", atm.sacar("7777", mock, 300));
 	}
 	
 	@Test
