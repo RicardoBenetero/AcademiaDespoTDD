@@ -37,13 +37,13 @@ public class TesteCaixaEletronico {
 	@Test
 	public void logarComSucesso() {
 
-		assertEquals("Usuário Autenticado", atm.login("1234", mock));
+		assertEquals("Usuï¿½rio Autenticado", atm.login("1234", mock));
 	}
 
 	@Test
 	public void logarComSucessoCaixaComVariasContas() {
 
-		assertEquals("Usuário Autenticado", atm.login("5678", mock));
+		assertEquals("Usuï¿½rio Autenticado", atm.login("5678", mock));
 	}
 
 	@Test(expected = ContaInexistenteException.class)
@@ -55,7 +55,7 @@ public class TesteCaixaEletronico {
 
 	@Test
 	public void depositarComSucesso() {
-		assertEquals("Depósito recebido com sucesso", atm.depositar("1234", mock, 200));
+		assertEquals("Depï¿½sito recebido com sucesso", atm.depositar("1234", mock, 200));
 	}
 	
 	@Test(expected = ContaInexistenteException.class)
@@ -69,6 +69,18 @@ public class TesteCaixaEletronico {
 	@Test
 	public void sacarComSucesso() {
 		assertEquals("Retire seu dinheiro", atm.sacar("1234", mock, 100));
+	}
+	@Test(expected = ContaInexistenteException.class)
+	public void sacarComFalha() {
+		
+		atm.sacar("888888", mock, 1236);
+
+		
+	}
+	
+	@Test
+	public void saldoComSucesso() {
+		assertEquals("O saldo Ã© R$200.0", atm.saldo("1234", mock, 200));
 	}
 
 }

@@ -38,4 +38,9 @@ public class CaixaEletronico {
 
 		return "Retire seu dinheiro";
 	}
+
+	public Object saldo(String string, MockServicoRemoto mock, int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
