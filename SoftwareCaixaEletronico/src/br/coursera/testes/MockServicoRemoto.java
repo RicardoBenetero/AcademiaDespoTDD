@@ -8,6 +8,7 @@ import br.coursera.ServicoRemoto;
 
 public class MockServicoRemoto implements ServicoRemoto {
 	List<ContaCorrente> contas = new ArrayList<ContaCorrente>();
+
 	public List<ContaCorrente> getContas() {
 		return contas;
 	}
@@ -25,25 +26,19 @@ public class MockServicoRemoto implements ServicoRemoto {
 			}
 		}
 
-		throw new ContaInexistenteException("Não foi possível autenticar o usuário");
+		throw new ContaInexistenteException("Nï¿½o foi possï¿½vel autenticar o usuï¿½rio");
 	}
 
 	@Override
 	public void persistirConta(String numeroConta, Double saldo) {
-		System.out.println(saldo + " saldo do persistir" );
 
 		for (ContaCorrente contaCorrente : contas) {
 			if (contaCorrente.getNumeroConta() == numeroConta) {
-			
-				System.out.println(contaCorrente.getNumeroConta() + "numeroconta " +contaCorrente.getSaldo() + " saldo" );
+
 				contaCorrente.setSaldo(saldo);
 			}
 
-
-		
-		
-			
 		}
-		
+
 	}
 }
