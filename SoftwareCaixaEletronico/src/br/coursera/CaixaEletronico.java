@@ -29,4 +29,9 @@ public class CaixaEletronico {
 		return "Depósito recebido com sucesso";
 
 	}
+
+	public Object sacar(String numeroContaCorrente, MockServicoRemoto mock, double saldo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

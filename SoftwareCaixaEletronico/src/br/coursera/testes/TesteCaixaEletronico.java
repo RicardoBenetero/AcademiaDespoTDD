@@ -65,5 +65,10 @@ public class TesteCaixaEletronico {
 
 		
 	}
+	
+	@Test
+	public void sacarComSucesso() {
+		assertEquals("Retire seu dinheiro", atm.sacar("1234", mock, 100));
+	}
 
 }
