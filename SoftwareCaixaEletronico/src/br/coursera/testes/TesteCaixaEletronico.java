@@ -55,7 +55,7 @@ public class TesteCaixaEletronico {
 
 	@Test
 	public void depositarComSucesso() {
-		assertEquals("Depósito recebido com sucesso", atm.depositar("1234", mock, 100));
+		assertEquals("Depósito recebido com sucesso", atm.depositar("1234", mock, 200));
 	}
 	
 	@Test(expected = ContaInexistenteException.class)

@@ -23,15 +23,27 @@ public class CaixaEletronico {
 
 	public String depositar(String numeroContaCorrente, MockServicoRemoto mock, double saldo) {
 		contaCorrenteRecuperada = mock.recuperarConta(numeroContaCorrente);
+		
+		System.out.println(saldo + "  saldo no depositar");
+		
+		System.out.println(contaCorrenteRecuperada + "  contaCorrenteRecuperada no depositar");
 
-		mock.persistirConta(numeroContaCorrente, saldo);
+		mock.persistirConta(contaCorrenteRecuperada, saldo);
 
 		return "Depósito recebido com sucesso";
 
 	}
 
-	public Object sacar(String numeroContaCorrente, MockServicoRemoto mock, double saldo) {
-		// TODO Auto-generated method stub
-		return null;
+	public String sacar(String numeroContaCorrente, MockServicoRemoto mock, double saldo) {
+		contaCorrenteRecuperada = mock.recuperarConta(numeroContaCorrente);
+		
+		double saldoCom = mock.getContas().iterator().next().getSaldo();
+		System.out.println(saldoCom + " saldoSemRetirada"   + "  " +contaCorrenteRecuperada);
+		
+		
+		double saldoComRetirada = mock.getContas().iterator().next().getSaldo() - saldo;
+		mock.persistirConta(contaCorrenteRecuperada, saldoComRetirada);
+System.out.println(saldoComRetirada + " saldoComRetirada"   + "  " +contaCorrenteRecuperada);
+		return "Retire seu dinheiro";
 	}
 }

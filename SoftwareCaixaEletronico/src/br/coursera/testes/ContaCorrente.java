@@ -17,8 +17,13 @@ public class ContaCorrente {
 	}
 
 
-	public void setSaldo(Double saldo) {
-    this.saldo = saldo;		
+	public void setSaldo(Double valor) {
+    this.saldo = saldo + valor;		
+	}
+
+
+	public double getSaldo() {
+		return saldo;
 	}
 
 
