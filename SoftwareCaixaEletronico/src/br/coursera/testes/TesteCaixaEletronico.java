@@ -80,9 +80,20 @@ public class TesteCaixaEletronico {
 	@Test
 	public void sacarComSucesso() {
 		atm.depositar("1234", mock, mockHardware, 200, leituraEnvelope);
+		atm.sacar("1234", mock, mockHardware, 100);
 
-		assertEquals("Retire seu dinheiro", atm.sacar("1234", mock, mockHardware, 100));
+		assertEquals("O saldo é R$100.0",  atm.saldo("1234", mock));
+		 
 	}
+	@Test
+	public void chamarHardwareEntregarDinheiroComSucesso() {
+		atm.depositar("1234", mock, mockHardware, 200, leituraEnvelope);
+		atm.sacar("1234", mock, mockHardware, 100);
+
+		assertTrue(mockHardware.entregarDinheiro);
+		 
+	}
+	
 
 	@Test(expected = ContaInexistenteException.class)
 	public void sacarComFalha() {

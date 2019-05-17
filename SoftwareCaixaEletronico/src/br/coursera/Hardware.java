@@ -2,7 +2,7 @@ package br.coursera;
 
 public interface Hardware {
 	public  String pegarNumeroDaContaCartao(String numeroConta);
-	public  String entregarDinheiro();
+	public  void entregarDinheiro();
 	public  String lerEnvelope();
 	 
 }

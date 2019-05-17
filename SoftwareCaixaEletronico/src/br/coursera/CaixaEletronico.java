@@ -30,17 +30,17 @@ public class CaixaEletronico {
 
 	}
 
-	public String sacar(String numeroContaCorrente, ServicoRemoto servicoRemoto, Hardware hardware, double valor) {
+	public void sacar(String numeroContaCorrente, ServicoRemoto servicoRemoto, Hardware hardware, double valor) {
 		contaCorrenteRecuperada = servicoRemoto.recuperarConta(numeroContaCorrente);
 		if ((contaCorrenteRecuperada.getSaldo() - valor) >= 0) {
 			servicoRemoto.persistirConta(contaCorrenteRecuperada.getNumeroConta(), contaCorrenteRecuperada.getSaldo() - valor);
 
-			return hardware.entregarDinheiro();
+			hardware.entregarDinheiro();
 
-		}
+		}else {
 
 		throw new SaldoInsuficienteException("Saldo insuficiente");
-
+		}
 	}
 
 	public String saldo(String numeroContaCorrente, ServicoRemoto servicoRemoto) {
