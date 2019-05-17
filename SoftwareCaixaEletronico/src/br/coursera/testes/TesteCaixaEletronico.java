@@ -11,6 +11,7 @@ import org.junit.Test;
 import br.coursera.CaixaEletronico;
 import br.coursera.ContaInexistenteException;
 import br.coursera.LerEnvelopeException;
+import br.coursera.NumeroContaException;
 import br.coursera.SaldoInsuficienteException;
 
 public class TesteCaixaEletronico {

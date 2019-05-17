@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.coursera.Hardware;
+import br.coursera.NumeroContaException;
 
 public class MockHardware implements Hardware {
 	
