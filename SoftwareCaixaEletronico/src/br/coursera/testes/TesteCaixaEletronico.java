@@ -61,7 +61,7 @@ public class TesteCaixaEletronico {
 	}
 
 	@Test(expected = LerEnvelopeException.class)
-	public void depositarComFalhaErroAoLerenvelope() {
+	public void depositarComFalhaErroAoLerEnvelope() {
 		leituraEnvelope = false;
 		atm.depositar("1234", mock, mockHardware, 200, leituraEnvelope);
 
