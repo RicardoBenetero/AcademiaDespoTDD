@@ -11,34 +11,34 @@ public class CaixaEletronico {
 
 	List<ContaCorrente> contas = new ArrayList<ContaCorrente>();
 
-	public String login(String numeroConta, MockHardware mock) {
+	public String login(String numeroConta, Hardware hardware) {
 
-		mock.pegarNumeroDaContaCartao(numeroConta);
+		hardware.pegarNumeroDaContaCartao(numeroConta);
 
 		return "Usuario autenticado";
 
 	}
 
-	public String depositar(String numeroContaCorrente, MockServicoRemoto mock, MockHardware mockHardware, double saldo,
+	public String depositar(String numeroContaCorrente, ServicoRemoto servicoRemoto, Hardware hardware, double saldo,
 			boolean leituraEnvelope) {
-		contaCorrenteRecuperada = mock.recuperarConta(numeroContaCorrente);
+		contaCorrenteRecuperada = servicoRemoto.recuperarConta(numeroContaCorrente);
 
 		if (contaCorrenteRecuperada != null && leituraEnvelope == true) {
-			mock.persistirConta(contaCorrenteRecuperada.getNumeroConta(), saldo);
+			servicoRemoto.persistirConta(contaCorrenteRecuperada.getNumeroConta(), saldo);
 
-			return mockHardware.lerEnvelope();
+			return hardware.lerEnvelope();
 		}
 
 		throw new LerEnvelopeException("Envelope com problema nao foi possivel receber");
 
 	}
 
-	public String sacar(String numeroContaCorrente, MockServicoRemoto mock, MockHardware mockHardware, double valor) {
-		contaCorrenteRecuperada = mock.recuperarConta(numeroContaCorrente);
+	public String sacar(String numeroContaCorrente, ServicoRemoto servicoRemoto, Hardware hardware, double valor) {
+		contaCorrenteRecuperada = servicoRemoto.recuperarConta(numeroContaCorrente);
 		if ((contaCorrenteRecuperada.getSaldo() - valor) >= 0) {
-			mock.persistirConta(contaCorrenteRecuperada.getNumeroConta(), contaCorrenteRecuperada.getSaldo() - valor);
+			servicoRemoto.persistirConta(contaCorrenteRecuperada.getNumeroConta(), contaCorrenteRecuperada.getSaldo() - valor);
 
-			return mockHardware.entregarDinheiro();
+			return hardware.entregarDinheiro();
 
 		}
 
@@ -46,8 +46,8 @@ public class CaixaEletronico {
 
 	}
 
-	public String saldo(String numeroContaCorrente, MockServicoRemoto mock) {
-		contaCorrenteRecuperada = mock.recuperarConta(numeroContaCorrente);
+	public String saldo(String numeroContaCorrente, ServicoRemoto servicoRemoto) {
+		contaCorrenteRecuperada = servicoRemoto.recuperarConta(numeroContaCorrente);
 
 		return "O saldo é R$" + contaCorrenteRecuperada.getSaldo();
 
