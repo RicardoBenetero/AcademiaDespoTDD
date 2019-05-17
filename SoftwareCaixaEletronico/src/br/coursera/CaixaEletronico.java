@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.coursera.testes.ContaCorrente;
+import br.coursera.testes.MockHardware;
 import br.coursera.testes.MockServicoRemoto;
 
 public class CaixaEletronico {
@@ -11,42 +12,45 @@ public class CaixaEletronico {
 
 	List<ContaCorrente> contas = new ArrayList<ContaCorrente>();
 
-	public String login(String numeroconta, MockServicoRemoto mock) {
+	public String login(String numeroConta, MockHardware mock) {
 
-		if (mock.recuperarConta(numeroconta).getNumeroConta().contains(numeroconta)) {
-			return "Usu�rio Autenticado";
-		} else {
-			return "N�o foi poss�vel autenticar o usu�rio";
-		}
+		mock.pegarNumeroDaContaCartao(numeroConta);
+
+		return "Usuario autenticado";
 
 	}
 
-	public String depositar(String numeroContaCorrente, MockServicoRemoto mock, double saldo) {
+	public String depositar(String numeroContaCorrente, MockServicoRemoto mock, MockHardware mockHardware, double saldo,
+			boolean leituraEnvelope) {
 		contaCorrenteRecuperada = mock.recuperarConta(numeroContaCorrente);
 
-		mock.persistirConta(contaCorrenteRecuperada.getNumeroConta(), saldo);
+		if (contaCorrenteRecuperada != null && leituraEnvelope == true) {
+			mock.persistirConta(contaCorrenteRecuperada.getNumeroConta(), saldo);
 
-		return "Dep�sito recebido com sucesso";
+			return mockHardware.lerEnvelope();
+		}
+
+		throw new LerEnvelopeException("Envelope com problema nao foi possivel receber");
 
 	}
 
-	public String sacar(String numeroContaCorrente, MockServicoRemoto mock, double valor) {
+	public String sacar(String numeroContaCorrente, MockServicoRemoto mock, MockHardware mockHardware, double valor) {
 		contaCorrenteRecuperada = mock.recuperarConta(numeroContaCorrente);
-		if((contaCorrenteRecuperada.getSaldo() - valor) >= 0) {
-		mock.persistirConta(contaCorrenteRecuperada.getNumeroConta(), contaCorrenteRecuperada.getSaldo() - valor);
-		return "Retire seu dinheiro";
-		
+		if ((contaCorrenteRecuperada.getSaldo() - valor) >= 0) {
+			mock.persistirConta(contaCorrenteRecuperada.getNumeroConta(), contaCorrenteRecuperada.getSaldo() - valor);
+
+			return mockHardware.entregarDinheiro();
+
 		}
-	
+
 		throw new SaldoInsuficienteException("Saldo insuficiente");
-		
+
 	}
 
 	public String saldo(String numeroContaCorrente, MockServicoRemoto mock) {
 		contaCorrenteRecuperada = mock.recuperarConta(numeroContaCorrente);
 
 		return "O saldo é R$" + contaCorrenteRecuperada.getSaldo();
-		// return "Conta não encontrada";
 
 	}
 }

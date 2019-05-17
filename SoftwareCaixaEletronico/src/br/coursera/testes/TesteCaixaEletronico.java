@@ -10,17 +10,18 @@ import org.junit.Test;
 
 import br.coursera.CaixaEletronico;
 import br.coursera.ContaInexistenteException;
+import br.coursera.LerEnvelopeException;
 import br.coursera.SaldoInsuficienteException;
 
 public class TesteCaixaEletronico {
 
-	CaixaEletronico atm;
-	List<ContaCorrente> contas;
-	MockServicoRemoto mock;
-	ContaCorrente conta1;
-	ContaCorrente conta2;
-	
-
+	private CaixaEletronico atm;
+	private List<ContaCorrente> contas;
+	private MockServicoRemoto mock;
+	private MockHardware mockHardware;
+	private ContaCorrente conta1;
+	private ContaCorrente conta2;
+	private boolean leituraEnvelope = true;
 
 	@Before
 	public void inicializaDados() {
@@ -32,74 +33,80 @@ public class TesteCaixaEletronico {
 		contas.add(conta1);
 		contas.add(conta2);
 		mock = new MockServicoRemoto(contas);
-
+		mockHardware = new MockHardware(contas);
 	}
 
 	@Test
 	public void logarComSucesso() {
 
-		assertEquals("Usu�rio Autenticado", atm.login("1234", mock));
+		assertEquals("Usuario autenticado", atm.login("1234", mockHardware));
 	}
 
 	@Test
 	public void logarComSucessoCaixaComVariasContas() {
 
-		assertEquals("Usu�rio Autenticado", atm.login("5678", mock));
+		assertEquals("Usuario autenticado", atm.login("5678", mockHardware));
 	}
 
-	@Test(expected = ContaInexistenteException.class)
+	@Test(expected = NumeroContaException.class)
 	public void logarComFalha() {
-		atm.login("78910", mock);
+		atm.login("78910", mockHardware);
 
-		
 	}
 
 	@Test
 	public void depositarComSucesso() {
-		
-		assertEquals("Dep�sito recebido com sucesso", atm.depositar("1234", mock, 200));
+
+		assertEquals("Deposito recebido com sucesso", atm.depositar("1234", mock, mockHardware, 200, leituraEnvelope));
 	}
-	
+
+	@Test(expected = LerEnvelopeException.class)
+	public void depositarComFalhaErroAoLerenvelope() {
+		leituraEnvelope = false;
+		atm.depositar("1234", mock, mockHardware, 200, leituraEnvelope);
+
+		
+	}
+
 	@Test(expected = ContaInexistenteException.class)
 	public void depositarComFalha() {
-		
-		atm.depositar("888888", mock, 1236);
 
-		
+		atm.depositar("888888", mock, mockHardware, 1236, leituraEnvelope);
+
 	}
-	
+
 	@Test
 	public void sacarComSucesso() {
-		atm.depositar("1234", mock, 200);
-		
-		assertEquals("Retire seu dinheiro", atm.sacar("1234", mock, 100));
+		atm.depositar("1234", mock, mockHardware, 200, leituraEnvelope);
+
+		assertEquals("Retire seu dinheiro", atm.sacar("1234", mock, mockHardware, 100));
 	}
+
 	@Test(expected = ContaInexistenteException.class)
 	public void sacarComFalha() {
-		
-		atm.sacar("888888", mock, 1236);
 
-		
+		atm.sacar("888888", mock, mockHardware, 1236);
+
 	}
+
 	@Test(expected = SaldoInsuficienteException.class)
 	public void sacarComFalhaSaldoInsuficiente() {
 		ContaCorrente conta4 = new ContaCorrente("7777");
 		contas.add(conta4);
 		mock = new MockServicoRemoto(contas);
-		atm.depositar("7777", mock, 200);
-		atm.sacar("7777", mock, 300);
-		
+		atm.depositar("7777", mock, mockHardware, 200, leituraEnvelope);
+		atm.sacar("7777", mock, mockHardware, 300);
+
 	}
-	
+
 	@Test
 	public void saldoComSucesso() {
 		ContaCorrente conta3 = new ContaCorrente("6666");
 		contas.add(conta3);
 		mock = new MockServicoRemoto(contas);
-		atm.depositar("6666", mock, 200);
-		atm.sacar("6666", mock, 100);
+		atm.depositar("6666", mock, mockHardware, 200, leituraEnvelope);
+		atm.sacar("6666", mock, mockHardware, 100);
 		assertEquals("O saldo é R$100.0", atm.saldo("6666", mock));
 	}
-	
 
 }
