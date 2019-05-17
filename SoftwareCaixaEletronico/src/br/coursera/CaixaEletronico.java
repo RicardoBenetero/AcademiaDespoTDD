@@ -16,18 +16,19 @@ public class CaixaEletronico {
 
 	}
 
-	public String depositar(String numeroContaCorrente, ServicoRemoto servicoRemoto, Hardware hardware, double saldo,
+	public void depositar(String numeroContaCorrente, ServicoRemoto servicoRemoto, Hardware hardware, double saldo,
 			boolean leituraEnvelope) {
 		contaCorrenteRecuperada = servicoRemoto.recuperarConta(numeroContaCorrente);
 
 		if (contaCorrenteRecuperada != null && leituraEnvelope == true) {
 			servicoRemoto.persistirConta(contaCorrenteRecuperada.getNumeroConta(), saldo);
 
-			return hardware.lerEnvelope();
-		}
+			//return hardware.lerEnvelope();
+			hardware.lerEnvelope();
+		}else {
 
 		throw new LerEnvelopeException("Envelope com problema nao foi possivel receber");
-
+		}
 	}
 
 	public void sacar(String numeroContaCorrente, ServicoRemoto servicoRemoto, Hardware hardware, double valor) {

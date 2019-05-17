@@ -56,10 +56,17 @@ public class TesteCaixaEletronico {
 
 	}
 
-	@Test
 	public void depositarComSucesso() {
+		atm.depositar("1234", mock, mockHardware, 200, leituraEnvelope);
 
-		assertEquals("Deposito recebido com sucesso", atm.depositar("1234", mock, mockHardware, 200, leituraEnvelope));
+		assertEquals("O saldo é R$200.0", atm.saldo("1234", mock));
+	}
+
+	public void chamarHardwareLerEnvelopeComSucesso() {
+
+		atm.depositar("1234", mock, mockHardware, 200, leituraEnvelope);
+
+		assertTrue(mockHardware.lerEnvelope);
 	}
 
 	@Test(expected = LerEnvelopeException.class)
@@ -67,7 +74,6 @@ public class TesteCaixaEletronico {
 		leituraEnvelope = false;
 		atm.depositar("1234", mock, mockHardware, 200, leituraEnvelope);
 
-		
 	}
 
 	@Test(expected = ContaInexistenteException.class)
@@ -82,18 +88,18 @@ public class TesteCaixaEletronico {
 		atm.depositar("1234", mock, mockHardware, 200, leituraEnvelope);
 		atm.sacar("1234", mock, mockHardware, 100);
 
-		assertEquals("O saldo é R$100.0",  atm.saldo("1234", mock));
-		 
+		assertEquals("O saldo é R$100.0", atm.saldo("1234", mock));
+
 	}
+
 	@Test
 	public void chamarHardwareEntregarDinheiroComSucesso() {
 		atm.depositar("1234", mock, mockHardware, 200, leituraEnvelope);
 		atm.sacar("1234", mock, mockHardware, 100);
 
 		assertTrue(mockHardware.entregarDinheiro);
-		 
+
 	}
-	
 
 	@Test(expected = ContaInexistenteException.class)
 	public void sacarComFalha() {

@@ -11,6 +11,7 @@ public class MockHardware implements Hardware {
 	
 	List<ContaCorrente> contas = new ArrayList<ContaCorrente>();
 	public boolean entregarDinheiro = false;
+	public boolean lerEnvelope = false;
 	
 	public List<ContaCorrente> getContas() {
 		return contas;
@@ -36,15 +37,15 @@ public class MockHardware implements Hardware {
 
 	@Override
 	public void entregarDinheiro() {
-		//return "Retire seu dinheiro";
 		entregarDinheiro = true;
 		System.out.println("Retire seu dinheiro");
 
 	}
 
 	@Override
-	public String lerEnvelope() {
-		return "Deposito recebido com sucesso";
+	public void lerEnvelope() {
+		lerEnvelope = true;
+		System.out.println ("Deposito recebido com sucesso");
 		
 
 	}
