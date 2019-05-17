@@ -3,9 +3,6 @@ package br.coursera;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.coursera.testes.MockHardware;
-import br.coursera.testes.MockServicoRemoto;
-
 public class CaixaEletronico {
 	private ContaCorrente contaCorrenteRecuperada;
 
