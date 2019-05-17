@@ -3,6 +3,7 @@ package br.coursera.testes;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.coursera.ContaCorrente;
 import br.coursera.ContaInexistenteException;
 import br.coursera.ServicoRemoto;
 

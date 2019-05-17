@@ -1,4 +1,4 @@
-package br.coursera.testes;
+package br.coursera;
 
 public class ContaCorrente {
 	
