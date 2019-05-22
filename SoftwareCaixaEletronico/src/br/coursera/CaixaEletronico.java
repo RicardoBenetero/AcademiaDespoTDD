@@ -23,7 +23,7 @@ public class CaixaEletronico {
 		if (contaCorrenteRecuperada != null && leituraEnvelope == true) {
 			servicoRemoto.persistirConta(contaCorrenteRecuperada.getNumeroConta(), saldo);
 
-			//return hardware.lerEnvelope();
+			
 			hardware.lerEnvelope();
 		}else {
 
@@ -33,19 +33,34 @@ public class CaixaEletronico {
 
 	public void sacar(String numeroContaCorrente, ServicoRemoto servicoRemoto, Hardware hardware, double valor) {
 		contaCorrenteRecuperada = servicoRemoto.recuperarConta(numeroContaCorrente);
+		
+		if(saldoSuficiente(contaCorrenteRecuperada,valor,servicoRemoto)) {
+			hardware.entregarDinheiro();
+		/*
 		if ((contaCorrenteRecuperada.getSaldo() - valor) >= 0) {
 			servicoRemoto.persistirConta(contaCorrenteRecuperada.getNumeroConta(), contaCorrenteRecuperada.getSaldo() - valor);
 
 			hardware.entregarDinheiro();
+        */
+		//}else {
 
-		}else {
-
-		throw new SaldoInsuficienteException("Saldo insuficiente");
+		//throw new SaldoInsuficienteException("Saldo insuficiente");
 		}
 	}
 
+	private boolean saldoSuficiente(ContaCorrente contaCorrenteRecuperada, double valor,ServicoRemoto servicoRemoto) {
+		if(contaCorrenteRecuperada.getSaldo() - valor >= 0) {
+			servicoRemoto.persistirConta(contaCorrenteRecuperada.getNumeroConta(), contaCorrenteRecuperada.getSaldo() - valor);
+		return true;
+		}else{
+			throw new SaldoInsuficienteException("Saldo insuficiente");
+		}
+		
+		}
+
 	public String saldo(String numeroContaCorrente, ServicoRemoto servicoRemoto) {
 		contaCorrenteRecuperada = servicoRemoto.recuperarConta(numeroContaCorrente);
+		
 
 		return "O saldo é R$" + contaCorrenteRecuperada.getSaldo();
 
