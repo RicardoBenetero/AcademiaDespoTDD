@@ -11,10 +11,10 @@ public class ArmazenamentoTest {
 		Usuario joao = new Usuario();
 		Armazenamento armazenamento = new Armazenamento();
 		
-		armazenamento.adicionarUsuario();
-		armazenamento.adicionarPonto(10);
+		armazenamento.adicionarUsuario(joao);
+		armazenamento.adicionarPonto(joao,10);
 		
-		assertEquals(10,armazenamento.getUsuario("joao"));
+		assertEquals(10,joao.getPontuacao());
 	}
 
 }
