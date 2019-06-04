@@ -16,15 +16,17 @@ public class Armazenamento {
 
 	}
 
-	public void adicionarPonto(Usuario usuario, int ponto) {
+	public void adicionarPonto(Usuario usuario, int ponto, String tipo) {
 
-		usuario.adicionaPonto(ponto);
+		usuario.adicionaPonto(ponto, tipo);
 
 	}
 
 	public ArrayList<Usuario> getUsuarios() {
 		return usuarios;
 	}
+
+	
 
 	
 
