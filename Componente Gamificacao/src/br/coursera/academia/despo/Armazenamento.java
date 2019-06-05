@@ -11,17 +11,13 @@ public class Armazenamento {
 
 	}
 
-	public void adicionarUsuario(Usuario usuario) {
-		usuarios.add(usuario);
+	
+	public void armazenarQuantidadeTipoPontoRecebidaPorUsuario(Usuario usuario, int quantidadePonto, String tipo) {
+
+		usuario.adicionaPonto(quantidadePonto, tipo);
 
 	}
-
-	public void adicionarPonto(Usuario usuario, int ponto, String tipo) {
-
-		usuario.adicionaPonto(ponto, tipo);
-
-	}
-	public int getQuantidadeTipo(Usuario usuario, String tipo) {
+	public int recuperarQuantosPontosDeUmTipoTemUsuario(Usuario usuario, String tipo) {
 		return usuario.getPontos(tipo);
 }
 

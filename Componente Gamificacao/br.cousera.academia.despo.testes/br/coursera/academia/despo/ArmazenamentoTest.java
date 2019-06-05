@@ -18,8 +18,7 @@ public class ArmazenamentoTest {
 		usuarios.add(joao);
 		Armazenamento armazenamento = new Armazenamento(usuarios);
 		
-		armazenamento.adicionarUsuario(joao);
-		armazenamento.adicionarPonto(joao,10,"estrela");
+		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(joao,10,"estrela");
         Map<String, Integer> tipos = new HashMap<String, Integer>();
 		
 		tipos.put("estrela", 10);
@@ -33,8 +32,7 @@ public class ArmazenamentoTest {
 		usuarios.add(joao);
 		Armazenamento armazenamento = new Armazenamento(usuarios);
 		
-		armazenamento.adicionarUsuario(joao);
-		armazenamento.adicionarPonto(joao,10,"estrela");
+		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(joao,10,"estrela");
 		
 		Map<String, Integer> tipos = new HashMap<String, Integer>();
 		
@@ -50,10 +48,8 @@ public class ArmazenamentoTest {
 		usuarios.add(joao);
 		Armazenamento armazenamento = new Armazenamento(usuarios);
 		
-		armazenamento.adicionarUsuario(joao);
-		armazenamento.adicionarPonto(joao,10,"estrela");
-		armazenamento.adicionarPonto(joao,20,"moeda");
-		armazenamento.adicionarPonto(joao,20,"moeda");
+		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(joao,10,"estrela");
+		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(joao,20,"moeda");
 
 		
 		Map<String, Integer> tipos = new HashMap<String, Integer>();
@@ -62,7 +58,7 @@ public class ArmazenamentoTest {
 		tipos.put("moeda", 20);
 		
 		
-		assertEquals(10,armazenamento.getQuantidadeTipo(joao, "moeda"));
+		assertEquals(20,armazenamento.recuperarQuantosPontosDeUmTipoTemUsuario(joao, "moeda"));
 	}
 
 
