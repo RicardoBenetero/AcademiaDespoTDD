@@ -21,6 +21,9 @@ public class Armazenamento {
 		usuario.adicionaPonto(ponto, tipo);
 
 	}
+	public int getQuantidadeTipo(Usuario usuario, String tipo) {
+		return usuario.getPontos(tipo);
+}
 
 	public ArrayList<Usuario> getUsuarios() {
 		return usuarios;

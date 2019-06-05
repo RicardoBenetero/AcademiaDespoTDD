@@ -6,7 +6,7 @@ import java.util.Map;
 public class Usuario {
 	
 	private String nome;
-	//private int pontuacao;
+	private int pontuacao;
 	//private String tipo;
 	
 	private Map<String, Integer> tipos = new HashMap<String, Integer>();
@@ -22,5 +22,11 @@ public class Usuario {
 	public Map<String, Integer> getPontuacao() {
 		return tipos;
 	}
-
+	public int getPontos(String tipo){
+		if(tipos.containsKey(tipo)){
+			pontuacao = pontuacao + 1;
+			return tipos.get(tipo);
+		}
+		return 0;
+}
 }
