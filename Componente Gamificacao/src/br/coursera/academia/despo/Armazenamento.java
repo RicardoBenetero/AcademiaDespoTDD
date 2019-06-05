@@ -1,7 +1,6 @@
 package br.coursera.academia.despo;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class Armazenamento {
 
