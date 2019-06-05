@@ -25,6 +25,12 @@ public class Armazenamento {
 		return usuarios;
 	}
 
+
+	public String recuperarUsuarioQueJaRecebeuAlgumTipoDePonto() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 	

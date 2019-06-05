@@ -60,6 +60,27 @@ public class ArmazenamentoTest {
 		
 		assertEquals(20,armazenamento.recuperarQuantosPontosDeUmTipoTemUsuario(joao, "moeda"));
 	}
+	@Test
+	public void deveraRetornarUsuarioQueJaRecebeuAlgumTipoDePonto() {
+		
+		ArrayList<Usuario> usuarios = new ArrayList<>();
+		Usuario joao = new Usuario();
+		Usuario maria = new Usuario();
+
+		usuarios.add(joao);
+		usuarios.add(maria);
+
+		Armazenamento armazenamento = new Armazenamento(usuarios);
+		
+		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(joao,10,"estrela");
+		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(joao,20,"moeda");
+
+		
+		
+		
+		
+		assertEquals("joao",armazenamento.recuperarUsuarioQueJaRecebeuAlgumTipoDePonto());
+	}
 
 
 }
