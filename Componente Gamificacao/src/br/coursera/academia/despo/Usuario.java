@@ -31,14 +31,14 @@ public class Usuario {
 		return 0;
 }
 	public String getTipos(){
-		String s = "";
+		String tipoPonto = "";
 		Set<String> chaves = tipos.keySet();
 		for(String chave : chaves){
 			if(chave != null)
-				s += chave + ";";
+				tipoPonto += chave + ";";
 		}
 		
-		return s;
+		return tipoPonto;
 }
 		
 
