@@ -14,7 +14,7 @@ public class ArmazenamentoTest {
 	public void deveraArmazenarPontoAumUsuario() {
 		
 		ArrayList<Usuario> usuarios = new ArrayList<>();
-		Usuario joao = new Usuario();
+		Usuario joao = new Usuario("Joao");
 		usuarios.add(joao);
 		Armazenamento armazenamento = new Armazenamento(usuarios);
 		
@@ -28,7 +28,7 @@ public class ArmazenamentoTest {
 	public void deveraArmazenarPontoAumUsuarioeTipodoPonto() {
 		
 		ArrayList<Usuario> usuarios = new ArrayList<>();
-		Usuario joao = new Usuario();
+		Usuario joao = new Usuario("Joao");
 		usuarios.add(joao);
 		Armazenamento armazenamento = new Armazenamento(usuarios);
 		
@@ -44,7 +44,7 @@ public class ArmazenamentoTest {
 	public void deveraRecuperarQuantosPontosDeUmTipoUsuarioTem() {
 		
 		ArrayList<Usuario> usuarios = new ArrayList<>();
-		Usuario joao = new Usuario();
+		Usuario joao = new Usuario("Joao");
 		usuarios.add(joao);
 		Armazenamento armazenamento = new Armazenamento(usuarios);
 		
@@ -64,22 +64,25 @@ public class ArmazenamentoTest {
 	public void deveraRetornarUsuarioQueJaRecebeuAlgumTipoDePonto() {
 		
 		ArrayList<Usuario> usuarios = new ArrayList<>();
-		Usuario joao = new Usuario();
-		Usuario maria = new Usuario();
+		Usuario joao = new Usuario("Joao");
+		Usuario maria = new Usuario("Maria");
+		Usuario marlene = new Usuario("Marlene");
+
 
 		usuarios.add(joao);
 		usuarios.add(maria);
+		usuarios.add(marlene);
 
 		Armazenamento armazenamento = new Armazenamento(usuarios);
 		
 		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(joao,10,"estrela");
-		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(joao,20,"moeda");
+		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(maria,20,"moeda");
 
 		
 		
 		
 		
-		assertEquals("joao",armazenamento.recuperarUsuarioQueJaRecebeuAlgumTipoDePonto());
+		assertEquals("Joao;Maria;",armazenamento.recuperarUsuarioQueJaRecebeuAlgumTipoDePonto());
 	}
 
 

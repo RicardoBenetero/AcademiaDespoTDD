@@ -7,6 +7,11 @@ public class Usuario {
 	
 	private String nome;
 	
+	public Usuario(String nome) {
+		this.nome = nome;
+		
+	}
+	
 	private Map<String, Integer> tipos = new HashMap<String, Integer>();
 	public void adicionaPonto(int ponto, String tipo) {
 		tipos.put(tipo, + ponto);
@@ -23,5 +28,11 @@ public class Usuario {
 			return tipos.get(tipo);
 		}
 		return 0;
+}
+	public boolean temAlgumTipoDePonto() {
+		if(tipos.isEmpty()){
+			return false;
+		}
+		return true;
 }
 }

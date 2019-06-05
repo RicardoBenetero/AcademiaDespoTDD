@@ -27,12 +27,18 @@ public class Armazenamento {
 
 
 	public String recuperarUsuarioQueJaRecebeuAlgumTipoDePonto() {
-		// TODO Auto-generated method stub
-		return null;
+		String nomes = "";
+		for(Usuario usurario : usuarios){
+			if(usurario.temAlgumTipoDePonto()){
+				nomes = nomes + usurario.getNome() + ";";
+			}
+		}
+		return nomes;
+}
 	}
 
 	
 
 	
 
-}
+
