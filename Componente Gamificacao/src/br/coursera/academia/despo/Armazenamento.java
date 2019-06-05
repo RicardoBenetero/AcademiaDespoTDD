@@ -30,4 +30,9 @@ public class Armazenamento {
 		}
 		return nomes;
 	}
+
+	public Object recuperarTodosOsTiposDePontosRecebidosPeloUsuario(Usuario joao) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
