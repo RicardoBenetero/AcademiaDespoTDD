@@ -2,6 +2,7 @@ package br.coursera.academia.despo;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Usuario {
 	
@@ -29,6 +30,18 @@ public class Usuario {
 		}
 		return 0;
 }
+	public String getTipos(){
+		String s = "";
+		Set<String> chaves = tipos.keySet();
+		for(String chave : chaves){
+			if(chave != null)
+				s += chave + ";";
+		}
+		
+		return s;
+}
+		
+
 	public boolean temAlgumTipoDePonto() {
 		if(tipos.isEmpty()){
 			return false;

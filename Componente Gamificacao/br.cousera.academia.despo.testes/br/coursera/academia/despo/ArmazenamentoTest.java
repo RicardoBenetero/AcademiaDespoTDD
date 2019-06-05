@@ -101,7 +101,7 @@ public class ArmazenamentoTest {
 		
 		
 		
-		assertEquals("estrela",armazenamento.recuperarTodosOsTiposDePontosRecebidosPeloUsuario(joao));
+		assertEquals("topico;moeda;estrela;comentario;",armazenamento.recuperarTodosOsTiposDePontosRecebidosPeloUsuario(joao));
 	}
 
 

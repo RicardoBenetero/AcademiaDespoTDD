@@ -1,6 +1,7 @@
 package br.coursera.academia.despo;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Armazenamento {
 
@@ -31,8 +32,8 @@ public class Armazenamento {
 		return nomes;
 	}
 
-	public Object recuperarTodosOsTiposDePontosRecebidosPeloUsuario(Usuario joao) {
-		// TODO Auto-generated method stub
-		return null;
+	public String recuperarTodosOsTiposDePontosRecebidosPeloUsuario(Usuario usuario) {
+		
+		return usuario.getTipos();
 	}
 }
