@@ -58,6 +58,7 @@ public class Armazenamento {
 		String[] nomes = s.split(";");
 		for(String n : nomes){
 			pw.printf("%15s %15s %15d\r\n", usuario.getNome(), n, usuario.getPontos(n));
+			
 		}
 }
 }

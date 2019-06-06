@@ -1,0 +1,9 @@
+Pontuação:
+
+	Usuario 	   Tipo 	 pontos
+-----------------------------------------------------
+           Joao           moeda              20
+           Joao         estrela              10
+        Marlene          topico              20
+        Marlene      comentario              20
+-----------------------------------------------------

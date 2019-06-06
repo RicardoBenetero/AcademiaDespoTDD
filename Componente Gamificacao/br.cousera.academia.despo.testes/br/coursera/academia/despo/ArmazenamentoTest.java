@@ -123,7 +123,6 @@ public class ArmazenamentoTest {
 		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(marlene,20,"topico");
 		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(marlene,20,"comentario");
 
-		
 		armazenamento.GravarArquivo("arquivo.txt");
 		
 		
