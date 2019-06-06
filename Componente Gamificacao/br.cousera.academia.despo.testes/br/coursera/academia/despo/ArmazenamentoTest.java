@@ -2,6 +2,7 @@ package br.coursera.academia.despo;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -103,6 +104,29 @@ public class ArmazenamentoTest {
 		
 		assertEquals("topico;moeda;estrela;comentario;",armazenamento.recuperarTodosOsTiposDePontosRecebidosPeloUsuario(joao));
 	}
+	@Test
+	public void deveraGravarArquivoComPontuacaoDosUsuarios() throws IOException {
+		
+		ArrayList<Usuario> usuarios = new ArrayList<>();
+		Usuario joao = new Usuario("Joao");
+		Usuario marlene = new Usuario("Marlene");
 
+
+
+		usuarios.add(joao);
+		usuarios.add(marlene);
+
+		Armazenamento armazenamento = new Armazenamento(usuarios);
+		
+		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(joao,10,"estrela");
+		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(joao,20,"moeda");
+		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(marlene,20,"topico");
+		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(marlene,20,"comentario");
+
+		
+		armazenamento.GravarArquivo("arquivo.txt");
+		
+		
+	}
 
 }
