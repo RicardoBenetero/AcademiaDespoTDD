@@ -12,7 +12,6 @@ public class Armazenamento {
 
 	public Armazenamento(ArrayList<Usuario> usuarios) {
 		this.usuarios = usuarios;
-	
 
 	}
 
@@ -37,17 +36,17 @@ public class Armazenamento {
 	}
 
 	public String recuperarTodosOsTiposDePontosRecebidosPeloUsuario(Usuario usuario) {
-		
+
 		return usuario.getTipos();
 	}
 
 	public void GravarArquivo(String nomeArquivo) throws IOException {
 		arquivo = new Arquivo(usuarios);
-		
+
 		arquivo.GravarArquivo(nomeArquivo);
-		
+
 	}
-	
+
 	public ArrayList<Usuario> getUsuarios() {
 		return usuarios;
 	}
