@@ -40,7 +40,7 @@ public class Armazenamento {
 		return usuario.getTipos();
 	}
 
-	public void GravarArquivo(String nomeArquivo) throws IOException {
+	public void gravarArquivo(String nomeArquivo) throws IOException {
 		arquivo = new Arquivo(usuarios);
 
 		arquivo.GravarArquivo(nomeArquivo);
@@ -49,5 +49,10 @@ public class Armazenamento {
 
 	public ArrayList<Usuario> getUsuarios() {
 		return usuarios;
+	}
+
+	public String leArquivo(String string) {
+		return string;
+		
 	}
 }

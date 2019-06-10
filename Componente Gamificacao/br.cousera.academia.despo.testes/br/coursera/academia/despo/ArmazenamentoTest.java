@@ -123,7 +123,32 @@ public class ArmazenamentoTest {
 		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(marlene,20,"topico");
 		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(marlene,20,"comentario");
 
-		armazenamento.GravarArquivo("arquivo.txt");
+		armazenamento.gravarArquivo("arquivo.txt");
+		
+		
+	}
+	
+	@Test
+	public void deveraLerArquivoComPontuacaoDosUsuarios() throws IOException {
+		
+		ArrayList<Usuario> usuarios = new ArrayList<>();
+		Usuario joao = new Usuario("Joao");
+		Usuario marlene = new Usuario("Marlene");
+
+
+
+		usuarios.add(joao);
+		usuarios.add(marlene);
+
+		Armazenamento armazenamento = new Armazenamento(usuarios);
+		
+		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(joao,10,"estrela");
+		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(joao,20,"moeda");
+		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(marlene,20,"topico");
+		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(marlene,20,"comentario");
+
+		armazenamento.gravarArquivo("arquivo.txt");
+		armazenamento.leArquivo("arquivo.txt");
 		
 		
 	}
