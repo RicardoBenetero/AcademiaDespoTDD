@@ -26,6 +26,9 @@ public class Usuario {
 	}
 	public int getPontos(String tipo){
 		if(tipos.containsKey(tipo)){
+			 for (String chave : tipos.keySet()) {
+			      System.out.print(chave + " ");
+			   }
 			return tipos.get(tipo);
 		}
 		return 0;

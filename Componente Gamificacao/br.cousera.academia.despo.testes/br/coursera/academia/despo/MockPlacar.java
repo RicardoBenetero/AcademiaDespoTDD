@@ -14,7 +14,7 @@ public class MockPlacar implements Placar {
 
 	@Override
 	public void registrarPonto(Usuario usuario, int ponto, String tipo) {
-		// TODO Auto-generated method stub
+		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(usuario, ponto, tipo);
 		
 	}
 
