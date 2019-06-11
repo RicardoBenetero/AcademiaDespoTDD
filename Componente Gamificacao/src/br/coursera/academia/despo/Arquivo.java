@@ -1,9 +1,12 @@
 package br.coursera.academia.despo;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Arquivo {
 	private ArrayList<Usuario> usuarios;
@@ -37,4 +40,16 @@ public class Arquivo {
 
 		}
 	}
+	public List<String> lerArquivo(String nomeArquivo) throws IOException {
+		List<String> linhas = new ArrayList<>();
+		FileReader fr = new FileReader(nomeArquivo);
+		BufferedReader br = new BufferedReader(fr);
+		String linha;
+		while((linha = br.readLine() )!= null) {
+			linhas.add(linha);
+		}
+		br.close();
+		
+		return linhas;
+}
 }

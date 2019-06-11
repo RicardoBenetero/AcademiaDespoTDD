@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Armazenamento {
 
@@ -51,8 +52,9 @@ public class Armazenamento {
 		return usuarios;
 	}
 
-	public String leArquivo(String string) {
-		return string;
+	public List<String> lerArquivo(String nomeArquivo) throws IOException {
+		arquivo = new Arquivo(usuarios);
+		return arquivo.lerArquivo(nomeArquivo);
 		
 	}
 }

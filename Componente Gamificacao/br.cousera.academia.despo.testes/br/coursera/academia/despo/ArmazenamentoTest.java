@@ -148,9 +148,9 @@ public class ArmazenamentoTest {
 		armazenamento.armazenarQuantidadeTipoPontoRecebidaPorUsuario(marlene,20,"comentario");
 
 		armazenamento.gravarArquivo("arquivo.txt");
-		armazenamento.leArquivo("arquivo.txt");
+		armazenamento.lerArquivo("arquivo.txt");
 		
-		
+
 	}
 
 }
