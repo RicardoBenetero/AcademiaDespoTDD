@@ -32,7 +32,6 @@ public class PlacarTest {
 		assertEquals(25,joao.getPontos("estrela"));
 		assertEquals(15,marlene.getPontos("estrela"));
 
-		
 	}
 
 }
