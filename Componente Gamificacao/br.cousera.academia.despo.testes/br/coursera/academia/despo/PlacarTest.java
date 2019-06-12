@@ -31,7 +31,7 @@ public class PlacarTest {
 
 	}
 	@Test
-	public void retronarTodosOsPontosDoUsuario() {
+	public void retornarTodosOsPontosDoUsuario() {
 		ArrayList<Usuario> usuarios = new ArrayList<>();
 		Usuario joao = new Usuario("Joao");
 
@@ -50,8 +50,42 @@ public class PlacarTest {
 		
 		tipos.put("moeda", 25);
 		tipos.put("estrela", 50);
+		
 
 		assertEquals(tipos, mockPlacar.retornarTodosPontosDoUsuario(joao));
+	
+
+	}
+	@Test
+	public void retornarRankingDeUmTipoDeponto() {
+		ArrayList<Usuario> usuarios = new ArrayList<>();
+		Usuario joao = new Usuario("Joao");
+		Usuario maria = new Usuario("Maria");
+		Usuario ana = new Usuario("Ana");
+		Usuario lucia = new Usuario("Lucia");
+
+		usuarios.add(joao);
+	    usuarios.add(maria);
+		usuarios.add(ana);
+		usuarios.add(lucia);
+
+		
+
+		Armazenamento armazenamento = new Armazenamento(usuarios);
+
+		MockPlacar mockPlacar = new MockPlacar(armazenamento);
+
+		
+		mockPlacar.registrarPonto(joao, 25, "moeda");
+		mockPlacar.registrarPonto(joao, 50, "estrela");
+		mockPlacar.registrarPonto(maria, 5, "estrela");
+		mockPlacar.registrarPonto(ana, 15, "estrela");
+		mockPlacar.registrarPonto(ana, 10, "moeda");
+		mockPlacar.registrarPonto(lucia, 10, "topico");
+
+		
+
+		assertEquals("Joao", 50, mockPlacar.retornarRankingDeUmTipoDeponto("estrela"));
 	
 
 	}
