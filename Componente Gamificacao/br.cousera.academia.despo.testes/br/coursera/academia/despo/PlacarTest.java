@@ -3,6 +3,8 @@ package br.coursera.academia.despo;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -14,22 +16,43 @@ public class PlacarTest {
 		Usuario joao = new Usuario("Joao");
 		Usuario marlene = new Usuario("Marlene");
 
-
-
 		usuarios.add(joao);
 		usuarios.add(marlene);
 
 		Armazenamento armazenamento = new Armazenamento(usuarios);
-		
-		
-		MockPlacar  mockPlacar = new MockPlacar(armazenamento);
-		
+
+		MockPlacar mockPlacar = new MockPlacar(armazenamento);
+
 		mockPlacar.registrarPonto(joao, 10, "estrela");
 		mockPlacar.registrarPonto(marlene, 25, "moeda");
+
+		assertEquals(10, joao.getPontos("estrela"));
+		assertEquals(25, marlene.getPontos("moeda"));
+
+	}
+	@Test
+	public void retronarTodosOsPontosDoUsuario() {
+		ArrayList<Usuario> usuarios = new ArrayList<>();
+		Usuario joao = new Usuario("Joao");
+
+		usuarios.add(joao);
 		
+
+		Armazenamento armazenamento = new Armazenamento(usuarios);
+
+		MockPlacar mockPlacar = new MockPlacar(armazenamento);
+
+		
+		mockPlacar.registrarPonto(joao, 25, "moeda");
+		mockPlacar.registrarPonto(joao, 50, "estrela");
+		
+        Map<String, Integer> tipos = new HashMap<String, Integer>();
+		
+		tipos.put("moeda", 25);
+		tipos.put("estrela", 50);
+
+		assertEquals(tipos, mockPlacar.retornarTodosPontosDoUsuario(joao));
 	
-		assertEquals(10,joao.getPontos("estrela"));
-		assertEquals(25,marlene.getPontos("moeda"));
 
 	}
 

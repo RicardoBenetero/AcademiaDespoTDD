@@ -1,6 +1,7 @@
 package br.coursera.academia.despo;
 
 import java.util.List;
+import java.util.Map;
 
 public class MockPlacar implements Placar {
 	
@@ -19,10 +20,15 @@ public class MockPlacar implements Placar {
 	}
 
 	@Override
-	public String[] retornarTodosPontosDoUsuario() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public Map<String, Integer> retornarTodosPontosDoUsuario(Usuario usuario) {
+		
+		
+		
+		
+	
+		return usuario.getPontuacao();
+		}
+
 
 	@Override
 	public List<String> retornarRankingTipoPonto(String tipo) {
