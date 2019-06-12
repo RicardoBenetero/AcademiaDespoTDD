@@ -25,12 +25,11 @@ public class PlacarTest {
 		MockPlacar  mockPlacar = new MockPlacar(armazenamento);
 		
 		mockPlacar.registrarPonto(joao, 10, "estrela");
-		mockPlacar.registrarPonto(joao, 5, "estrela");
-		mockPlacar.registrarPonto(marlene, 15, "estrela");
 		mockPlacar.registrarPonto(marlene, 25, "moeda");
+		
 	
-		assertEquals(25,joao.getPontos("estrela"));
-		assertEquals(15,marlene.getPontos("estrela"));
+		assertEquals(10,joao.getPontos("estrela"));
+		assertEquals(25,marlene.getPontos("moeda"));
 
 	}
 
