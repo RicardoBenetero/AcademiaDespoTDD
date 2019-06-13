@@ -1,5 +1,6 @@
 package br.coursera.academia.despo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -30,9 +31,20 @@ public class MockPlacar implements Placar {
 		return null;
 	}
 
-	public String retornarRankingDeUmTipoDeponto(String string) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<String> retornarRankingDeUmTipoDeponto(String tipo) {
+		ArrayList<String> pontuacoes = new ArrayList();
+
+		ArrayList<Usuario> usuarios = new ArrayList();
+		
+		
+		usuarios = armazenamento.getUsuarios();
+		
+		for (Usuario usuario : usuarios) {
+			
+			pontuacoes.add (usuario.getPontuacao(tipo));
+			//System.out.println(usuario.getPontuacao());
+		}
+		return pontuacoes;
 	}
 
 }

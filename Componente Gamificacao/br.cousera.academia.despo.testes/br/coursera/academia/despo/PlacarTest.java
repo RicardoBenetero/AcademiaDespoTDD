@@ -83,9 +83,13 @@ public class PlacarTest {
 		mockPlacar.registrarPonto(ana, 10, "moeda");
 		mockPlacar.registrarPonto(lucia, 10, "topico");
 
+		ArrayList<String> pontuacoes = new ArrayList();
 		
+		pontuacoes.add("Joao estrela = 50");
+		pontuacoes.add("Ana estrela = 15");
+		pontuacoes.add("Maria estrela = 5");
 
-		assertEquals("Joao", 50, mockPlacar.retornarRankingDeUmTipoDeponto("estrela"));
+		assertEquals(pontuacoes, mockPlacar.retornarRankingDeUmTipoDeponto("estrela"));
 	
 
 	}

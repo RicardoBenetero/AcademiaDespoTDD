@@ -1,6 +1,10 @@
 package br.coursera.academia.despo;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -52,4 +56,17 @@ public class Usuario {
 		}
 		return true;
 	}
+	public String getPontuacao(String tipo) {
+		
+		
+		 if ( tipos.containsKey( tipo ) ) {
+             System.out.println(this.nome + " "+ tipo+
+              " = "+tipos.get(tipo));             
+            }
+		return this.nome + " " + tipo +
+	              " = "+tipos.get(tipo);
+	             
+	
 }
+}
+
