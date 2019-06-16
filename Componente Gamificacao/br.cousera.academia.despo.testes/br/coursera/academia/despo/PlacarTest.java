@@ -92,7 +92,7 @@ public class PlacarTest {
 		pontuacoes.add("Ana estrela = 15");
 		pontuacoes.add("Maria estrela = 5");
 
-		assertEquals(pontuacoes, mockPlacar.retornarRankingDeUmTipoDeponto("estrela"));
+		assertEquals(pontuacoes, mockPlacar.retornarRankingTipoPonto("estrela"));
 	
 
 	}

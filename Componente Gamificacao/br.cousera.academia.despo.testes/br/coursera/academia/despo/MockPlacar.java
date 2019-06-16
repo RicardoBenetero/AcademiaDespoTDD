@@ -27,12 +27,6 @@ public class MockPlacar implements Placar {
 
 	@Override
 	public List<String> retornarRankingTipoPonto(String tipo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public ArrayList<String> retornarRankingDeUmTipoDeponto(String tipo) {
-
 		ArrayList<String> pontuacoes = new ArrayList();
 
 		ArrayList<Usuario> usuarios = new ArrayList();
@@ -43,7 +37,7 @@ public class MockPlacar implements Placar {
 
 			pontuacoes.add(usuario.getPontuacao(tipo));
 		}
-		
+
 		return pontuacoes;
 	}
 
