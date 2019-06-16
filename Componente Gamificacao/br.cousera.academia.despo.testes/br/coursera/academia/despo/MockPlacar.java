@@ -1,9 +1,6 @@
 package br.coursera.academia.despo;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -45,9 +42,8 @@ public class MockPlacar implements Placar {
 		for (Usuario usuario : usuarios) {
 
 			pontuacoes.add(usuario.getPontuacao(tipo));
-
 		}
-
+		
 		return pontuacoes;
 	}
 
